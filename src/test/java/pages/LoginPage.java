@@ -19,7 +19,7 @@ public class LoginPage extends RunCucumber {
 
     // ações / funções / métodos
     public void acessarAplicao() {
-        getDriver("firefox").get(URL);
+        getDriver("chrome").get(URL);
     }
 
     public void acessarTelaLogin() {
@@ -31,20 +31,22 @@ public class LoginPage extends RunCucumber {
     }
 
     public void preencherSenha(String senha){
+
         fillField(campoSenha, senha);
     }
 
     public void clicarLogin(){
-
         clickElement (botaoFazerLogin);
     }
 
     public void verificaLoginSucesso(){
+
         checkMessage(By.id("swal2-title"), "Login realizado");
     }
 
     public void verificaCampoVazio(String message){
-        checkMessage(By.id("invalid_input"), message);
+
+        checkMessage(By.className("invalid_input"), message);
     }
 
     public void acessarTelaCadastro(){
