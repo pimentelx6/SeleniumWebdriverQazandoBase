@@ -2,7 +2,7 @@ name: Smoke Tests - PR
 
 on:
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   RunTest:
@@ -10,10 +10,10 @@ jobs:
 
     steps:
       - name: Clonar o projeto
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: instalar o java 11
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v3
         with:
           java-version: "11"
           distribution: "adopt"
@@ -23,8 +23,8 @@ jobs:
         uses: browser-actions/setup-chrome@v1
 
       - name: instalar o setup chromedriver
-      - uses: nanasess/setup-chromedriver@v2
-      - run: |
+        uses: nanasess/setup-chromedriver@v2
+        run: |
           export DISPLAY=:99
           chromedriver --url-base=/wd/hub &
           sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
@@ -34,4 +34,3 @@ jobs:
 
 
 
-# gerar o reatório
